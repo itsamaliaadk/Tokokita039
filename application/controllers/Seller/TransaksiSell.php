@@ -6,7 +6,7 @@ class TransaksiSell extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        if (!$this->session->user_error("idKonsumen")) {
+        if (!$this->session->userdata("idKonsumen")) {
             $this->session->set_flashdata('pesan_gagal', 'Anda harus login');
             redirect('', 'refresh');
         }

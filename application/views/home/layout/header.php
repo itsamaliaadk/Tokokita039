@@ -138,6 +138,9 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
+                                            <a class="dropdown-item" href="<?php echo site_url('main/dashboard'); ?>">Dashboard Member</a>
+                                        </li>
+                                        <li>
                                             <a class="dropdown-item" href="<?php echo site_url('toko'); ?>">Produk Saya</a>
                                         </li>
                                         <li>
