@@ -52,4 +52,16 @@ class Madmin extends CI_Model{
 		return $q;
 	}
 
+	public function get_history_penjualan($idKonsumen)
+    {
+        $this->db->select('o.idOrder, o.tglOrder, o.statusOrder, o.grand_total, d.idProduk, d.jumlah, d.harga, p.namaProduk');
+        $this->db->from('tbl_order o');
+        $this->db->join('tbl_detail_order d', 'o.idOrder = d.idOrder');
+        $this->db->join('tbl_produk p', 'd.idProduk = p.idProduk');
+        $this->db->join('tbl_toko t', 'o.idToko = t.idToko');
+        $this->db->where('t.idKonsumen', $idKonsumen);
+        $this->db->order_by('o.tglOrder', 'DESC');
+        return $this->db->get()->result();
+    }
+
 }

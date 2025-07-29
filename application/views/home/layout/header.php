@@ -138,10 +138,10 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="#">Produk Saya</a>
+                                            <a class="dropdown-item" href="<?php echo site_url('toko'); ?>">Produk Saya</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="<?php echo base_url("seller/transaksi") ?>">Penjualan Saya</a>
+                                            <a class="dropdown-item" href="<?php echo site_url('Seller/TransaksiSell/history'); ?>">Penjualan Saya</a>
                                         </li>
 
                                     </ul>
