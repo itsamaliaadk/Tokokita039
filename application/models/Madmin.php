@@ -1,18 +1,22 @@
 <?php
 
-class Madmin extends CI_Model{
-	
-	public function cek_login($u, $p){
-		$q = $this->db->get_where('tbl_admin', array('userName'=>$u, 'password'=>$p));
+class Madmin extends CI_Model
+{
+
+	public function cek_login($u, $p)
+	{
+		$q = $this->db->get_where('tbl_admin', array('userName' => $u, 'password' => $p));
 		return $q;
 	}
 
-	public function get_all_data($tabel){
-		$q=$this->db->get($tabel);
+	public function get_all_data($tabel)
+	{
+		$q = $this->db->get($tabel);
 		return $q;
 	}
 
-	public function get_produk(){
+	public function get_produk()
+	{
 		$this->db->select('*');
 		$this->db->from('tbl_produk');
 		$this->db->join('tbl_toko', 'tbl_toko.idToko = tbl_produk.idToko');
@@ -21,7 +25,8 @@ class Madmin extends CI_Model{
 		return $q;
 	}
 
-	public function get_kota_penjual($idToko){
+	public function get_kota_penjual($idToko)
+	{
 		$this->db->select('*');
 		$this->db->from('tbl_toko');
 		$this->db->join('tbl_member', 'tbl_member.idKonsumen = tbl_toko.idKonsumen');
@@ -30,38 +35,42 @@ class Madmin extends CI_Model{
 		return $q;
 	}
 
-	public function insert($tabel, $data){
+	public function insert($tabel, $data)
+	{
 		$this->db->insert($tabel, $data);
 	}
 
-	public function get_by_id($tabel, $id){
+	public function get_by_id($tabel, $id)
+	{
 		return $this->db->get_where($tabel, $id);
 	}
 
-	public function update($tabel, $data, $pk, $id){
+	public function update($tabel, $data, $pk, $id)
+	{
 		$this->db->where($pk, $id);
 		$this->db->update($tabel, $data);
 	}
 
-	public function delete($tabel, $id, $val){
-		$this->db->delete($tabel, array($id => $val)); 
+	public function delete($tabel, $id, $val)
+	{
+		$this->db->delete($tabel, array($id => $val));
 	}
 
-	public function cek_login_member($u, $p){
-		$q = $this->db->get_where('tbl_member', array('username'=>$u, 'password'=>$p, 'statusAktif'=>'Y'));
+	public function cek_login_member($u, $p)
+	{
+		$q = $this->db->get_where('tbl_member', array('username' => $u, 'password' => $p, 'statusAktif' => 'Y'));
 		return $q;
 	}
 
 	public function get_history_penjualan($idKonsumen)
-    {
-        $this->db->select('o.idOrder, o.tglOrder, o.statusOrder, o.grand_total, d.idProduk, d.jumlah, d.harga, p.namaProduk');
-        $this->db->from('tbl_order o');
-        $this->db->join('tbl_detail_order d', 'o.idOrder = d.idOrder');
-        $this->db->join('tbl_produk p', 'd.idProduk = p.idProduk');
-        $this->db->join('tbl_toko t', 'o.idToko = t.idToko');
-        $this->db->where('t.idKonsumen', $idKonsumen);
-        $this->db->order_by('o.tglOrder', 'DESC');
-        return $this->db->get()->result();
-    }
-
+	{
+		$this->db->select('o.idOrder, o.tglOrder, o.statusOrder, o.grand_total, d.idProduk, d.jumlah, d.harga, p.namaProduk');
+		$this->db->from('tbl_order o');
+		$this->db->join('tbl_detail_order d', 'o.idOrder = d.idOrder');
+		$this->db->join('tbl_produk p', 'd.idProduk = p.idProduk');
+		$this->db->join('tbl_toko t', 'o.idToko = t.idToko');
+		$this->db->where('t.idKonsumen', $idKonsumen);
+		$this->db->order_by('o.tglOrder', 'DESC');
+		return $this->db->get()->result();
+	}
 }

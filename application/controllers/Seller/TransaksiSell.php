@@ -12,12 +12,6 @@ class TransaksiSell extends CI_Controller
         }
     }
 
-    public function index()
-    {
-        // menampilkan transaksi member
-
-    }
-
     public function history()
     {
         $idKonsumen = $this->session->userdata('idKonsumen');

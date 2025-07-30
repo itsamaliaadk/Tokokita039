@@ -199,8 +199,11 @@ class Main extends CI_Controller
 
 	public function dashboard()
 	{
+		$idKonsumen = $this->session->userdata('idKonsumen');
+		$data['konsumen'] = $this->db->get_where('tbl_member', ['idKonsumen' => $idKonsumen])->row();
+
 		$this->load->view('home/layout/header');
-		$this->load->view('home/dashboard');
+		$this->load->view('home/dashboard', $data);
 		$this->load->view('home/layout/footer');
 	}
 
@@ -235,7 +238,6 @@ class Main extends CI_Controller
 
 		$grand_total = $this->cart->total() + $ongkir_value - $diskon_value;
 
-
 		$dataInput = array(
 			'idKonsumen' => $member->idKonsumen,
 			'idToko' => $this->session->userdata('idTokoPenjual'),
@@ -247,8 +249,19 @@ class Main extends CI_Controller
 			'grand_total' => $grand_total
 		);
 
+		// tambah detail order 
 		$this->Madmin->insert('tbl_order', $dataInput);
 		$insert_id = $this->db->insert_id();
+		foreach ($this->cart->contents() as $item) {
+			$data_detail = array(
+				'idOrder' => $insert_id,
+				'idProduk' => $item['id'],
+				'jumlah' => $item['qty'],
+				'harga' => $item['price']
+			);
+			$this->Madmin->insert('tbl_detail_order', $data_detail);
+		}
+
 
 		$transaction_details = array(
 			'order_id' => $insert_id,

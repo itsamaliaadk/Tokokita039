@@ -17,19 +17,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $no=1; foreach($history as $row): ?>
-                    <tr>
-                        <td><?= $no++; ?></td>
-                        <td><?= $row->tglOrder; ?></td>
-                        <td><?= $row->namaProduk; ?></td>
-                        <td><?= $row->jumlah; ?></td>
-                        <td>Rp<?= number_format($row->harga); ?></td>
-                        <td>Rp<?= number_format($row->jumlah * $row->harga); ?></td>
-                        <td><?= $row->statusOrder; ?></td>
-                    </tr>
+                    <?php $no = 1;
+                    foreach ($history as $row): ?>
+                        <tr>
+                            <td><?= $no++; ?></td>
+                            <td><?= $row->tglOrder; ?></td>
+                            <td><?= $row->namaProduk; ?></td>
+                            <td><?= $row->jumlah; ?></td>
+                            <td>Rp<?= number_format($row->harga); ?></td>
+                            <td>Rp<?= number_format($row->jumlah * $row->grand_total); ?></td>
+                            <td>
+                                <span class="badge bg-dark text-white p-2">
+                                    <?= $row->statusOrder; ?>
+                                </span>
+                            </td>
+                        </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
     </div>
-</div> 
+</div>

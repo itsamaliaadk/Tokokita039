@@ -28,5 +28,5 @@ class Transaksi extends CI_Controller
 }
 
 
-// blm sesuai id data tabel transaksinya
+
 // Transaksi = history pembelian saya

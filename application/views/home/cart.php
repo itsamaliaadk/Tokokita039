@@ -244,13 +244,3 @@
         });
     });
 </script>
-
-
-
-
-<!-- NOTES YG BLM -->
-
-<!-- 
-- list kurir blm bisa muncul krn limit, bsk coba lg
-- midtrans simulator
--->
