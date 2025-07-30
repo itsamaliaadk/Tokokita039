@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2025 at 09:14 AM
+-- Generation Time: Jul 30, 2025 at 05:51 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -59,7 +59,11 @@ CREATE TABLE `tbl_detail_order` (
 --
 
 INSERT INTO `tbl_detail_order` (`idDetailOrder`, `idOrder`, `idProduk`, `jumlah`, `harga`) VALUES
-(1, 25, 1, 1, 23500);
+(1, 25, 1, 1, 23500),
+(2, 33, 8, 1, 500000),
+(3, 34, 10, 1, 51000),
+(4, 35, 9, 1, 15000000),
+(5, 36, 10, 1, 51000);
 
 -- --------------------------------------------------------
 
@@ -80,7 +84,8 @@ INSERT INTO `tbl_kategori` (`idkat`, `namaKat`) VALUES
 (1, 'Baju Pria'),
 (3, 'Baju Wanita'),
 (4, 'Jaket Kulit'),
-(5, 'Merchandise');
+(5, 'Merchandise'),
+(6, 'Elektronik');
 
 -- --------------------------------------------------------
 
@@ -167,7 +172,15 @@ INSERT INTO `tbl_order` (`idOrder`, `idKonsumen`, `idToko`, `tglOrder`, `statusO
 (25, 10, 2, '2025-07-27', 'Dikemas', 'JNE OKE', 7000, 3500, 23500),
 (26, 13, 2, '2025-07-28', 'Dikemas', 'JNE OKE', 16000, 3500, 52500),
 (27, 10, 6, '2025-07-28', 'Belum Bayar', 'JNE OKE', 18000, 3500, 514500),
-(28, 10, 6, '2025-07-28', 'Dikemas', 'JNE OKE', 18000, 3500, 514500);
+(28, 10, 6, '2025-07-28', 'Dikemas', 'JNE OKE', 18000, 3500, 514500),
+(29, 10, 6, '2025-07-30', 'Belum Bayar', 'JNE OKE', 18000, 8000, 510000),
+(30, 10, 6, '2025-07-30', 'Belum Bayar', 'JNE OKE', 0, 0, 500000),
+(31, 10, 6, '2025-07-30', 'Dikemas', 'JNE OKE', 18000, 8000, 510000),
+(32, 13, 7, '2025-07-30', 'Dikemas', 'JNE OKE', 16000, 8000, 15008000),
+(33, 10, 6, '2025-07-30', 'Dikemas', 'JNE OKE', 18000, 8000, 510000),
+(34, 13, 7, '2025-07-30', 'Dikemas', 'JNE OKE', 16000, 8000, 59000),
+(35, 13, 7, '2025-07-30', 'Dikemas', 'JNE OKE', 16000, 8000, 15008000),
+(36, 13, 7, '2025-07-30', 'Dikemas', 'JNE OKE', 16000, 8000, 59000);
 
 -- --------------------------------------------------------
 
@@ -196,7 +209,9 @@ INSERT INTO `tbl_produk` (`idProduk`, `idKat`, `idToko`, `namaProduk`, `foto`, `
 (5, 1, 2, 'Baju Pria', 'cat-11.jpg', 40000, 4, 2, 'Baju Pria'),
 (6, 1, 4, 'Baju Anak', 'cat-3.jpg', 40000, 2, 200, 'Baju Anak'),
 (7, 3, 5, 'Sepatu', 'cat-6.jpg', 40000, 2, 200, 'Sepatu'),
-(8, 5, 6, 'BLACKPINK OFFICIAL LIGHTSTICK VER 2', 'ls_bp.jpg', 500000, 2, 650, 'Jual lighstick blackpink v2');
+(8, 5, 6, 'BLACKPINK OFFICIAL LIGHTSTICK VER 2', 'ls_bp.jpg', 500000, 2, 650, 'Jual lighstick blackpink v2'),
+(9, 6, 7, 'HP SAMSUNG S25', 'hp_s25.png', 15000000, 2, 162, 'SAMSUNG GALAXY S25\r\n-----------------\r\nPerforma\r\n- Prosesor : Snapdragon 8 Elite for Galaxy (3nm)\r\n- RAM: 12GB\r\n- Storage: 512GB\r\n- Network: 5G Ready\r\n\r\nDisplay\r\n- Ukuran: 6,2 inch\r\n- Teknologi: Dynamic AMOLED 2X, 1-120Hz\r\n- Resolusi: FHD+\r\n\r\nKamera\r\n- Kamera Belakang: 50 MP + 12 MP + 10 MP\r\n- Auto Focus Kamera Utama: Ya\r\n- Kamera Belakang\r\n- OIS: Ya\r\n- Kamera Depan: 12 MP\r\n- Auto Focus Kamera Belakang: Ya\r\n- Resolusi Video: UHD 8K (7680 X 4320) l @24fps\r\n\r\nBaterai\r\n- Kapasitas: 4000mAh\r\n- Jenis Pengisian Daya: Super Fast Charging, Fast Wireless Charging 2.0, Wireless PowerShare\r\n\r\nKetangguhan:\r\n- Corning Gorilla Glass Victus2 & Armor Aluminum frame\r\n- IP68 Water and Dust Resistant'),
+(10, 3, 7, 'Kemeja Linen Single Pocket', 'kmj.png', 51000, 5, 100, 'Material : Linen (adem dan cocok untuk cuaca di Indonesia)\r\nDetail produk : \r\nLingkar dada 115 cm\r\nPanjang 65-67 cm\r\nPanjang lengan 27cm ');
 
 -- --------------------------------------------------------
 
@@ -221,7 +236,8 @@ INSERT INTO `tbl_toko` (`idToko`, `idKonsumen`, `namaToko`, `logo`, `deskripsi`,
 (2, 2, 'Toko ABC', '4k-programming-java-script-logo-3hcns7bt28muj7ih2.jpg', 'Toko Lama', 'Y'),
 (4, 2, 'Toko DEF', '4k-programming-127001-w1546vdzj8vyw5191.jpg', 'Toko Baru', 'Y'),
 (5, 7, 'Toko Sepatu', 'cat-5.jpg', 'Toko Baju', 'Y'),
-(6, 13, 'Blinkeu.id', 'Screenshot_2025-07-28_113235.png', 'Menjual semua merch tentang BLACPINK.\r\n\r\n-WE LOVE BLACKPINK-', 'Y');
+(6, 13, 'Blinkeu.id', 'Screenshot_2025-07-28_113235.png', 'Menjual semua merch tentang BLACPINK.\r\n\r\n-WE LOVE BLACKPINK-', 'Y'),
+(7, 10, '56Jual Apa Saja', 'logo_toko_hp.jpg', 'Menjual semua barang original dan berkualitas.', 'Y');
 
 -- --------------------------------------------------------
 
@@ -244,7 +260,8 @@ INSERT INTO `tbl_voucher` (`id_voucher`, `kode_voucher`, `tgl_berakhir`, `nomina
 (2, 'C1V0UP', '2025-07-10', 10000),
 (5, 'ASYT2E', '2025-07-11', 2000),
 (6, 'ZSYT1E', '2025-07-10', 1000),
-(7, '13SMOA', '2025-07-29', 3500);
+(7, '13SMOA', '2025-07-29', 3500),
+(8, 'Y8WYE8', '2025-08-08', 8000);
 
 --
 -- Indexes for dumped tables
@@ -325,13 +342,13 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT for table `tbl_detail_order`
 --
 ALTER TABLE `tbl_detail_order`
-  MODIFY `idDetailOrder` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idDetailOrder` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_kategori`
 --
 ALTER TABLE `tbl_kategori`
-  MODIFY `idkat` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idkat` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_member`
@@ -349,25 +366,25 @@ ALTER TABLE `tbl_ongkir`
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `idOrder` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `idOrder` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `tbl_produk`
 --
 ALTER TABLE `tbl_produk`
-  MODIFY `idProduk` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idProduk` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_toko`
 --
 ALTER TABLE `tbl_toko`
-  MODIFY `idToko` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idToko` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_voucher`
 --
 ALTER TABLE `tbl_voucher`
-  MODIFY `id_voucher` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_voucher` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
